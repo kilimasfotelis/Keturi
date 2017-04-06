@@ -1,0 +1,22 @@
+﻿@model Keturi.Models.Number
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>4 : 4</h1>
+
+
+@using (Html.BeginForm(new { guess = "" }))
+{
+    @Html.TextBox("Guess");
+    <input type="submit" value="Try">
+}
+@Session["answer"]
+@if (ViewBag.list != null)
+{
+    foreach (var item in ViewBag.list as List<string>)
+    {
+        <p>@item</p>
+    }
+}
