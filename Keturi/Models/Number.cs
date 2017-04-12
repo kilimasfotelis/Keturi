@@ -9,7 +9,6 @@ namespace Keturi.Models
     {
         public string Answer { get; set; }
         public Number() { }
-        public string FinalAnswer { get; set; }
         public List<string> Notes { get; set; }
         public void createNotes(List<string> notes)
         {
