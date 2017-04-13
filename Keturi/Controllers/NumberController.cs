@@ -1,4 +1,5 @@
 ﻿using Keturi.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Keturi.Controllers
             Number n = (Number)Session["n"];
             ViewBag.count = n.Notes.Count();
             var db = new ApplicationDbContext();
-            var highscore = new Highscore { Nickname = User.Identity.Name, Score = n.Notes.Count() };
+            var highscore = new Highscore { Nickname = User.Identity.Name, Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId()};
             db.Highscores.Add(highscore);
             db.SaveChanges();
             return View();
