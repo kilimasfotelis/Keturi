@@ -79,6 +79,10 @@ namespace Keturi.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Nick must be between 3 and 20 symbols")]
+        public string Nickname { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -168,7 +168,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HighscoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NumberController.cs" />
@@ -176,7 +175,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Highscore.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Number.cs" />
@@ -314,11 +312,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Number\Index.cshtml" />
     <Content Include="Views\Number\Win.cshtml" />
-    <Content Include="Views\Highscores\Create.cshtml" />
-    <Content Include="Views\Highscores\Delete.cshtml" />
-    <Content Include="Views\Highscores\Details.cshtml" />
-    <Content Include="Views\Highscores\Edit.cshtml" />
-    <Content Include="Views\Highscores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
