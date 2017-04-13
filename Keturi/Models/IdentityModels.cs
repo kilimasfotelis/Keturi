@@ -29,5 +29,7 @@ namespace Keturi.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Highscore> Highscores { get; set; }
     }
 }

@@ -42,6 +42,10 @@ namespace Keturi.Controllers
         {
             Number n = (Number)Session["n"];
             ViewBag.count = n.Notes.Count();
+            var db = new ApplicationDbContext();
+            var highscore = new Highscore { Nickname = User.Identity.Name, Score = n.Notes.Count() };
+            db.Highscores.Add(highscore);
+            db.SaveChanges();
             return View();
         }
     }

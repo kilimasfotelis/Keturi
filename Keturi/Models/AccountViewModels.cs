@@ -82,7 +82,7 @@ namespace Keturi.Models
 
         [Required]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "Nick must be between 3 and 20 symbols")]
-        public string Nickname { get; set; }
+        public string UserName { get; set; }
     }
 
     public class ResetPasswordViewModel
