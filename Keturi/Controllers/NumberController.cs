@@ -49,10 +49,6 @@ namespace Keturi.Controllers
         public ActionResult Win()
         {
             Number n = (Number)Session["n"];
-            var db = new ApplicationDbContext();
-            var highscore = new Highscore { Nickname = User.Identity.GetNickname(), Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId() };
-            db.Highscores.Add(highscore);
-            db.SaveChanges();
             return View(n);
         }
         [Authorize]
