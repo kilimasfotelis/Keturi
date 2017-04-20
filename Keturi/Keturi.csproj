@@ -168,23 +168,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NumberController.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131618480_InitialCreate.cs" />
-    <Compile Include="Migrations\201704131618480_InitialCreate.Designer.cs">
-      <DependentUpon>201704131618480_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131657465_NicknameChanges.cs" />
-    <Compile Include="Migrations\201704131657465_NicknameChanges.Designer.cs">
-      <DependentUpon>201704131657465_NicknameChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131713175_UserIDChanges.cs" />
-    <Compile Include="Migrations\201704131713175_UserIDChanges.Designer.cs">
-      <DependentUpon>201704131713175_UserIDChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -326,6 +316,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Number\Index.cshtml" />
     <Content Include="Views\Number\Win.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\Create.cshtml" />
+    <Content Include="Views\Game\Play.cshtml" />
+    <Content Include="Views\Game\Playy.cshtml" />
+    <Content Include="Views\Number\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,17 +333,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704131618480_InitialCreate.resx">
-      <DependentUpon>201704131618480_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131657465_NicknameChanges.resx">
-      <DependentUpon>201704131657465_NicknameChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131713175_UserIDChanges.resx">
-      <DependentUpon>201704131713175_UserIDChanges.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

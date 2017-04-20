@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,9 @@ namespace Keturi.Models
 {
     public class Number
     {
+        [Required]
+        [RegularExpression(@"\d{4}", ErrorMessage ="keturi skaitmenys")]
+        public string Guess { get; set; }
         public string Answer { get; set; }
         public Number() { }
         public List<string> Notes { get; set; }
@@ -42,10 +46,10 @@ namespace Keturi.Models
 
         // tikrinama ar ivestas skaicius atitinka sugeneruota
         // jeigu neatitinka tuomet deda ji i sarasa
-        public Boolean compareValues(string guess, string answer)
+        public Boolean compareValues()
         {
             bool ok = false;
-            if (guess == answer)
+            if (Guess == Answer)
             {
                 ok = true;
             }
@@ -54,16 +58,16 @@ namespace Keturi.Models
                 int semiCorrect = 0; int correct = 0;
                 for (int i = 0; i < 4; i++)
                 {
-                    if (answer.Contains(guess[i]))
+                    if (Answer.Contains(Guess[i]))
                     {
                         semiCorrect++;
                     }
-                    if (answer[i] == guess[i])
+                    if (Answer[i] == Guess[i])
                     {
                         correct++;
                     }
                 }
-                Notes.Insert(0, string.Format("Jūsų spėjimas:{0}, Atspėta skaitmenų: {1}, Iš jų savo vietoje: {2}", guess, semiCorrect.ToString(), correct.ToString()));
+                Notes.Insert(0, string.Format("Jūsų spėjimas:{0}, Atspėta skaitmenų: {1}, Iš jų savo vietoje: {2}", Guess, semiCorrect.ToString(), correct.ToString()));
             }
             return ok;
         }

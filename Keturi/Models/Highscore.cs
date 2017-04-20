@@ -9,7 +9,6 @@ namespace Keturi.Models
     public class Highscore
     {
         public int ID { get; set; }
-        [Column(TypeName ="varchar")]
         public string Nickname { get; set; }
         public int Score { get; set; }
 

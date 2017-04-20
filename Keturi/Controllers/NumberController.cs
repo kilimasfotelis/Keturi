@@ -1,4 +1,5 @@
 ﻿using Keturi.Models;
+using Keturi.Extensions;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,10 @@ namespace Keturi.Controllers
 {
     public class NumberController : Controller
     {
-        // GET: Number
+
+        // sugeneruojamas random skaicius ir sukuriamas sarasas, kuriame talpinami
+        // neteisingi atsakymai
+
         public ActionResult Index()
         {
             Number n = new Number();
@@ -22,29 +26,41 @@ namespace Keturi.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(string guess)
-        {
+        // atlikus spejima, tikrinama ar jis atitinka sugeneruota skaiciu,
+        // skaiciui atitikus nukreipiama i "win" langa
+        // kitu atveju patiekiama informacija apie neteisinga spejima
 
+        [HttpPost]
+        public ActionResult Index(Number model)
+        {
             Number n = (Number)Session["n"];
-            if (n.compareValues(guess, n.Answer))
+            n.Guess = model.Guess;
+            if (n.compareValues())
             {
                 return RedirectToAction("Win");
             }
             else
             {
-                ViewBag.list = n.Notes;
-                return View();
+                return View(n);
             }
-
         }
 
+        //Nurodoma is kiek bandymu atspeta, bei leidziama rezultata patalpinti i duombaze
         public ActionResult Win()
         {
             Number n = (Number)Session["n"];
-            ViewBag.count = n.Notes.Count();
             var db = new ApplicationDbContext();
-            var highscore = new Highscore { Nickname = User.Identity.Name, Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId()};
+            var highscore = new Highscore { Nickname = User.Identity.GetNickname(), Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId() };
+            db.Highscores.Add(highscore);
+            db.SaveChanges();
+            return View(n);
+        }
+        [Authorize]
+        public ActionResult Insert()
+        {
+            Number n = (Number)Session["n"];
+            var db = new ApplicationDbContext();
+            var highscore = new Highscore { Nickname = User.Identity.GetNickname(), Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId() };
             db.Highscores.Add(highscore);
             db.SaveChanges();
             return View();

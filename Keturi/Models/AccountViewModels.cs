@@ -81,8 +81,9 @@ namespace Keturi.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name ="Nickname")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "Nick must be between 3 and 20 symbols")]
-        public string UserName { get; set; }
+        public string Nickname { get; set; }
     }
 
     public class ResetPasswordViewModel

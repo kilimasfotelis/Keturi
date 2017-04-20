@@ -8,4 +8,5 @@
 <h2>Sveikinimai</h2>
 
 Jūsų atsakymas:@Session["answer"] yra teisingas
-Neteisingų bandymų skaičius: @ViewBag.count
+Neteisingų bandymų skaičius: @Model.Notes.Count()
+@Html.ActionLink("Įsiamžinti garbės lentoje", "Insert", "Number")

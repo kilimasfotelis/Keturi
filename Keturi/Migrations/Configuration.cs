@@ -9,8 +9,7 @@ namespace Keturi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "Keturi.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Keturi.Models.ApplicationDbContext context)

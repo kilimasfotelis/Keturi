@@ -1,14 +1,16 @@
 ﻿@model Keturi.Models.Number
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Playy";
 }
 
-<h1>4 : 4</h1>
+<h2>Playy</h2>
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Number</h4>
         <hr />
@@ -20,22 +22,26 @@
                 @Html.ValidationMessageFor(model => model.Guess, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-@Session["answer"]
-@if (Model != null && Model.Notes != null)
-{
-    foreach (var item in Model.Notes)
-    {
-        <p>@item</p>
-    }
-}
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
