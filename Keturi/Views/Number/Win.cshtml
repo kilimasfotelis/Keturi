@@ -1,5 +1,4 @@
 ﻿@model Keturi.Models.Number
-
 @{
     ViewBag.Title = "Win";
 }
@@ -9,4 +8,4 @@
 
 Jūsų atsakymas:@Session["answer"] yra teisingas
 Neteisingų bandymų skaičius: @Model.Notes.Count()
-@Html.ActionLink("Įsiamžinti garbės lentoje", "Insert", "Number")
+@Html.ActionLink("Įsiamžinti garbės lentoje", "Insert", new { random = Session["random"]} )

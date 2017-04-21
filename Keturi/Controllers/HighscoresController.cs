@@ -15,6 +15,7 @@ namespace Keturi.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // Patiekiami visi zaidima uzbaigusiu rezultatai (sorting, paging, filtering)
         // GET: Highscores
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -56,6 +57,8 @@ namespace Keturi.Controllers
             return View(highscores.ToPagedList(pageNumber, pageSize));
         }
 
+        // Administratorius gali keisti irasus
+
         // GET: Highscores/Edit/5
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
@@ -88,6 +91,8 @@ namespace Keturi.Controllers
             }
             return View(highscore);
         }
+
+        // Administratorius gali trinti irasus
 
         // GET: Highscores/Delete/5
         [Authorize(Roles = "Administrator")]

@@ -12,8 +12,8 @@ namespace Keturi.Controllers
     public class NumberController : Controller
     {
 
-        // sugeneruojamas random skaicius ir sukuriamas sarasas, kuriame talpinami
-        // neteisingi atsakymai
+        // sugeneruojamas random skaicius ir sukuriamas sarasas, 
+        // kuriame skaiciuojami neteisingi atsakymai
 
         public ActionResult Index()
         {
@@ -21,13 +21,12 @@ namespace Keturi.Controllers
             n.Generate();
             n.createNotes(new List<string>());
             string answer = n.Answer;
-            Session["answer"] = answer;
             Session["n"] = n;
             return View();
         }
 
         // atlikus spejima, tikrinama ar jis atitinka sugeneruota skaiciu,
-        // skaiciui atitikus nukreipiama i "win" langa
+        // skaiciui atitikus nukreipiama i "win" langa,
         // kitu atveju patiekiama informacija apie neteisinga spejima
 
         [HttpPost]
@@ -37,7 +36,11 @@ namespace Keturi.Controllers
             n.Guess = model.Guess;
             if (n.compareValues())
             {
-                return RedirectToAction("Win");
+                //anti-cheat'as kad i Win screena nebutu pereinama per url
+                Random r = new Random();
+                int randomNumber = r.Next(123, 321);
+                Session["random"] = randomNumber;
+                return RedirectToAction("Win", new { random = randomNumber });
             }
             else
             {
@@ -45,21 +48,40 @@ namespace Keturi.Controllers
             }
         }
 
-        //Nurodoma is kiek bandymu atspeta, bei leidziama rezultata patalpinti i duombaze
-        public ActionResult Win()
+        // Nurodoma is kiek bandymu atspeta bei leidziama rezultata patalpinti i duombaze
+        public ActionResult Win(int? random)
         {
-            Number n = (Number)Session["n"];
-            return View(n);
+            //anticheat'o patikra, sukciai nukreipiami i home/index
+            if (random != null && random == (int)Session["random"])
+            {
+                Number n = (Number)Session["n"];
+                return View(n);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
+        // veiksmas rezultatui i duombaze patalpinti (tik uzsiregistravusiems) 
+        // + is Number/Win View'so ateina random skaicius patikrinimui ar ne per url patenkama
         [Authorize]
-        public ActionResult Insert()
+        public ActionResult Insert(int? random)
         {
-            Number n = (Number)Session["n"];
-            var db = new ApplicationDbContext();
-            var highscore = new Highscore { Nickname = User.Identity.GetNickname(), Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId() };
-            db.Highscores.Add(highscore);
-            db.SaveChanges();
-            return View();
+            // vel tikrinama ar nemeginta patekti per url
+            if (random != null && random == (int)Session["random"])
+            {
+                Number n = (Number)Session["n"];
+                var db = new ApplicationDbContext();
+                var highscore = new Highscore { Nickname = User.Identity.GetNickname(), Score = n.Notes.Count(), ApplicationUserId = User.Identity.GetUserId() };
+                db.Highscores.Add(highscore);
+                db.SaveChanges();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
