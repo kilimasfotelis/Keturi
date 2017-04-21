@@ -1,5 +1,8 @@
 namespace Keturi.Migrations
 {
+    using Keturi.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,7 +12,7 @@ namespace Keturi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Keturi.Models.ApplicationDbContext context)
@@ -26,6 +29,10 @@ namespace Keturi.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = "Administrator"});
+            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            //UserManager.AddToRole("5e97c3d2-bda4-41bc-96a8-940dd68323ed", "Administrator");
         }
     }
 }
