@@ -6,8 +6,15 @@ namespace Keturi.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Nickname")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Nick must be between 3 and 20 symbols")]
+        public string Nickname { get; set; }
+
     }
 
     public class ExternalLoginListViewModel

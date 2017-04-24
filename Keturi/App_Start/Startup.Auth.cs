@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Keturi.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace Keturi
 {
@@ -53,11 +54,22 @@ namespace Keturi
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
-
+            //var facebookAuthenticationOptions = new FacebookAuthenticationOptions()
+            //{
+            //    AppId = "1928185084080977",
+            //    AppSecret = "6f91de4b8f3de24ef40df4716f416092"
+            //};
+            //facebookAuthenticationOptions.Scope.Add("email");
+            //app.UseFacebookAuthentication(facebookAuthenticationOptions);
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
-
+            var googleOAuth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions
+        {
+            ClientId = "891122984686-vrqcm1p8gjnp0lrrldo3ecib0eei4mkc.apps.googleusercontent.com",
+            ClientSecret = "o8mcvJC6gxnH2Hp9-CLkhdQ4",
+        };
+            app.UseGoogleAuthentication(googleOAuth2AuthenticationOptions);
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    ClientId = "",

@@ -30,9 +30,9 @@ namespace Keturi.Migrations
             //    );
             //
 
-            //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = "Administrator"});
-            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            //UserManager.AddToRole("5e97c3d2-bda4-41bc-96a8-940dd68323ed", "Administrator");
+            //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = "Administrator" });
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            UserManager.AddToRole("face62f4-83ec-4485-8fb2-acd8abd03017", "Administrator");
         }
     }
 }
