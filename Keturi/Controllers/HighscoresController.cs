@@ -52,7 +52,7 @@ namespace Keturi.Controllers
                     highscores = highscores.OrderBy(s => s.Score);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(highscores.ToPagedList(pageNumber, pageSize));
         }

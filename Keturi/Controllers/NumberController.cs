@@ -69,7 +69,7 @@ namespace Keturi.Controllers
         public ActionResult Insert(int? random)
         {
             // vel tikrinama ar nemeginta patekti per url
-            if (random != null && random == (int)Session["random"])
+            if (random.HasValue && random == (int)Session["random"])
             {
                 Number n = (Number)Session["n"];
                 var db = new ApplicationDbContext();

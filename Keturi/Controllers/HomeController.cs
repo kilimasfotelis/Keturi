@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace Keturi.Controllers
 {
-    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()

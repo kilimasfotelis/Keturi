@@ -1,14 +1,10 @@
-﻿@using PagedList.Mvc
-@*@model IEnumerable<Keturi.Models.Highscore>*@
-@model PagedList.IPagedList<Keturi.Models.Highscore>
+﻿@model PagedList.IPagedList<Keturi.Models.Highscore>
 @using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Rezultatai";
 }
-
-<h2>Index</h2>
-
+<br />
 @using (Html.BeginForm("Index", "Highscores", FormMethod.Get))
 {
     <p>

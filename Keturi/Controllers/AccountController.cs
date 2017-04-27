@@ -12,7 +12,6 @@ using Keturi.Models;
 
 namespace Keturi.Controllers
 {
-    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

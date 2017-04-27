@@ -12,7 +12,7 @@ namespace Keturi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Keturi.Models.ApplicationDbContext context)
@@ -31,8 +31,8 @@ namespace Keturi.Migrations
             //
 
             //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = "Administrator" });
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            UserManager.AddToRole("face62f4-83ec-4485-8fb2-acd8abd03017", "Administrator");
+            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            //UserManager.AddToRole("391e6e16-7591-4194-a413-b15b6aa58acb", "Administrator");
         }
     }
 }

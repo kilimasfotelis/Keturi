@@ -9,6 +9,7 @@ namespace Keturi.Models
     public class Number
     {
         [Required]
+        [Display(Name = "Jūsų spėjimas:")]
         [RegularExpression(@"\d{4}", ErrorMessage ="keturi skaitmenys")]
         public string Guess { get; set; }
         public string Answer { get; set; }
